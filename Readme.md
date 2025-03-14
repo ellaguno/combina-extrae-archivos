@@ -16,16 +16,27 @@ This Python script, `extract_content.py`, is designed to extract multiple files 
 ## Input File Format
 
 The combined file should follow this general structure:
-ARBOL:
-├── backend 
-│ ├── app 
-│ │ ├── blueprints 
-│ │ │ └── tasks 
-│ │ │ └── ejemplo.py 
-│ │ └── init.py 
-│ └── requirements.txt 
-└── frontend 
-└── styles 
+
+##ARBOL:
+
+├── backend
+
+│ ├── app
+
+│ │ ├── blueprints
+
+│ │ │ └── tasks
+
+│ │ │ └── ejemplo.py
+
+│ │ └── init.py
+
+│ └── requirements.txt
+
+└── frontend
+
+└── styles
+
 └── globals.css
 
 File: ejemplo.py Path: backend/app/blueprints/tasks
