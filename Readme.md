@@ -71,7 +71,7 @@ File: globals.css Path: frontend/styles
 4.  **Run the Script:** Open a terminal or command prompt, navigate to the directory, and run the script:
 
     ```bash
-    python extract.py
+    python extract_content.py
     ```
 
 5.  **Output:**
