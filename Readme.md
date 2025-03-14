@@ -1,4 +1,60 @@
-# Project Extractor from Combined File
+# 2 tools: combine and extract:
+## Content Processor: File Combiner with Directory Tree
+
+This shell script, `combine_files.sh`, is a powerful tool for combining multiple files into a single output file (`combined_files_<date>.txt`) while preserving the directory structure. It's designed to be used for project documentation, backups, or any situation where you need to consolidate multiple files into one.
+
+## Features
+
+*   **File Combination:** Combines the content of multiple files into a single output file.
+*   **Directory Tree Generation:** Generates a visual representation of the directory tree within the output file.
+*   **Customizable Search Path:** Allows you to specify the directory to search for files.
+*   **Exclusion Patterns:** Supports excluding specific files or directories based on patterns (e.g., file extensions, names).
+*   **Default Exclusions:** Automatically excludes common binary files, images, and other file types that are typically not needed in text-based combinations.
+*   **Project Name:** Allows you to specify a project name, which is included in the output file's header.
+*   **Date Stamp:** The output file name includes the current date for easy identification.
+*   **Binary File Detection:** Skips binary files to avoid including non-text data.
+* **Debug mode:** Includes a debug mode to see the steps of the script.
+
+## How It Works
+
+The script performs the following steps:
+
+1.  **Initialization:**
+    *   Sets up variables for the output file name, search path, and exclusion patterns.
+    *   Parses command-line arguments to customize the script's behavior.
+    *   Creates the output file (or overwrites it if it already exists).
+    *   Writes a header to the output file, including the project name and date.
+
+2.  **Directory Tree Generation:**
+    *   The `generate_tree()` function recursively traverses the directory structure.
+    *   It uses `find` to list files and directories and `sort` to order them.
+    *   It uses `should_exclude()` to check if a file or directory should be excluded.
+    *   It outputs a visual representation of the tree to the output file using `├──`, `└──`, and `│` characters.
+
+3.  **File Processing:**
+    *   The `process_file()` function handles each file found by `find`.
+    *   It checks if the file is within the search path and if it should be excluded.
+    *   It checks if the file is binary.
+    *   It writes a header for the file in the output file, including the filename and its relative path.
+    *   It appends the file's content to the output file.
+
+4.  **Exclusion Logic:**
+    *   The `should_exclude()` function checks if a file or directory should be excluded based on:
+        *   **Default Exclusions:** A list of common binary and image file types.
+        *   **Custom Exclusions:** Patterns provided via the `-x` command-line argument.
+
+5. **Debug mode:**
+    * The script includes a debug mode that can be activated with `set -x`.
+
+## Usage
+
+```bash
+./combine_files.sh [-n project_name] [-p path] [-x exclude_pattern1] [-x exclude_pattern2] [...]
+```
+
+---
+
+## Project Extractor from Combined File
 
 This Python script, `extract_content.py`, is designed to extract multiple files and their corresponding directory structure from a single "combined" text file. This combined file is expected to have a specific format, where each file's information (name, path, and content) is separated by a delimiter. Additionally, it parses a tree structure within the combined file to provide a comparison of the files listed in the tree versus the files actually extracted.
 
